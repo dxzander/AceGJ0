@@ -6,10 +6,14 @@
 shader_type spatial;
 render_mode cull_back;
 //render_mode cull_disabled;
+varying float edge_sharpness;
 
 group_uniforms albedo;
 uniform sampler2D main_texture : source_color, hint_default_white;
-uniform vec3 main_color : source_color = vec3(1.0, 1.0, 1.0);
+uniform vec3 main_color : source_color = vec3(1.0);
+uniform bool is_gradient = false;
+uniform vec3 secondary_color : source_color = vec3(0.0);
+uniform float sharpness_scale : hint_range(0.1, 10.0) = 1.0; // Control the gradient intensity
 
 group_uniforms normal;
 uniform float normal_strength : hint_range(-16.0, 16.0) = 1.0;
@@ -81,7 +85,15 @@ void vertex() {
 }
 
 void fragment() {
-	vec4 _main = vec4(main_color, 1.0) * texture(main_texture, UV);
+	vec4 _main = texture(main_texture, UV);
+	if (is_gradient) {
+		//edge_sharpness = 1.0 - fresnel(sharpness_scale, NORMAL, TANGENT);
+		//_main = _main * vec4(mix(main_color, secondary_color, edge_sharpness), 1.0);
+		//_main = _main * vec4(mix(main_color, secondary_color, clamp((dFdx(NORMAL.z) + dFdy(NORMAL.z)) * 100.0, 0.0, 1.0)), 1.0);
+		_main = _main * vec4(mix(main_color, secondary_color, 1.0 - NORMAL.z), 1.0);
+	} else {
+		_main = _main * vec4(main_color, 1.0);
+	}
 
 	if (is_edging) {
 		float fresnel = fresnel(1.0, NORMAL, VIEW);
