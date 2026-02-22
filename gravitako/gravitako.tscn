@@ -1,7 +1,6 @@
-[gd_scene load_steps=36 format=4 uid="uid://bxejyvi3ta8mf"]
+[gd_scene format=4 uid="uid://bxejyvi3ta8mf"]
 
 [ext_resource type="Script" uid="uid://qmfxj8abrayn" path="res://gravitako/gravitako.gd" id="1_11c0f"]
-[ext_resource type="Script" uid="uid://bssr8xblrmmda" path="res://gravitako/SkellyIK.gd" id="6_ndbcy"]
 [ext_resource type="Script" uid="uid://dyuhsfbl1nw2a" path="res://gravitako/Camera.gd" id="7_227vq"]
 [ext_resource type="Material" uid="uid://ck6wpouuvwrtk" path="res://gravitako/GT Undersides.tres" id="8_2md02"]
 [ext_resource type="Script" uid="uid://dwrgbn8lw77sq" path="res://gravitako/Marks.gd" id="8_i63bf"]
@@ -758,7 +757,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7ywge")
 
-[node name="gravitako" type="CharacterBody3D" groups=["player"]]
+[node name="gravitako" type="CharacterBody3D" unique_id=1958605858 groups=["player"]]
 collision_layer = 3
 collision_mask = 3
 floor_constant_speed = true
@@ -767,7 +766,7 @@ floor_snap_length = 0.2
 safe_margin = 0.1
 script = ExtResource("1_11c0f")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2143655586]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1.5, 2.08165e-12)
 light_color = Color(0.996078, 0.905882, 0.827451, 1)
 light_bake_mode = 0
@@ -777,28 +776,28 @@ shadow_blur = 10.0
 omni_range = 10.0
 omni_attenuation = 0.5
 
-[node name="Collider" type="CollisionShape3D" parent="."]
+[node name="Collider" type="CollisionShape3D" parent="." unique_id=1750201919]
 shape = SubResource("SphereShape3D_mtb8l")
 
-[node name="Up" type="Marker3D" parent="."]
+[node name="Up" type="Marker3D" parent="." unique_id=255541038]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="Front" type="Marker3D" parent="."]
+[node name="Front" type="Marker3D" parent="." unique_id=1086364297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -1)
 
-[node name="Right" type="Marker3D" parent="."]
+[node name="Right" type="Marker3D" parent="." unique_id=128482520]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.08165e-12, 2.08165e-12)
 
-[node name="Dir" type="Marker3D" parent="."]
+[node name="Dir" type="Marker3D" parent="." unique_id=1896183581]
 transform = Transform3D(1, -1.21652e-31, 0, -1.21652e-31, 1, 0, 0, 0, 1, 0, 0, -1)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Dir"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Dir" unique_id=1852898637]
 visible = false
 mesh = SubResource("SphereMesh_xvmqk")
 
-[node name="Body" type="Node3D" parent="."]
+[node name="Body" type="Node3D" parent="." unique_id=306499030]
 
-[node name="Skelly" type="Skeleton3D" parent="Body"]
+[node name="Skelly" type="Skeleton3D" parent="Body" unique_id=1003082451]
 modifier_callback_mode_process = 0
 bones/0/name = "Spine1"
 bones/0/parent = -1
@@ -1368,83 +1367,7 @@ bones/80/position = Vector3(0, 0, 0)
 bones/80/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/80/scale = Vector3(1, 1, 1)
 
-[node name="SkellyIKCL" type="SkeletonIK3D" parent="Body/Skelly"]
-process_priority = 1
-root_bone = &"Arm1_r"
-tip_bone = &"Arm6_r"
-override_tip_basis = false
-use_magnet = true
-magnet = Vector3(5, 5, 5)
-target_node = NodePath("../../../Marks/MarkCL")
-script = ExtResource("6_ndbcy")
-
-[node name="SkellyIKCR" type="SkeletonIK3D" parent="Body/Skelly"]
-process_priority = 1
-root_bone = &"Arm1_l"
-tip_bone = &"Arm6_l"
-override_tip_basis = false
-use_magnet = true
-magnet = Vector3(5, 5, 5)
-target_node = NodePath("../../../Marks/MarkCR")
-script = ExtResource("6_ndbcy")
-
-[node name="SkellyIKWL" type="SkeletonIK3D" parent="Body/Skelly"]
-process_priority = 1
-root_bone = &"Arm7_r"
-tip_bone = &"Arm14_r"
-override_tip_basis = false
-use_magnet = true
-magnet = Vector3(5, 5, 5)
-target_node = NodePath("../../../Marks/MarkWL")
-script = ExtResource("6_ndbcy")
-
-[node name="SkellyIKWR" type="SkeletonIK3D" parent="Body/Skelly"]
-process_priority = 1
-root_bone = &"Arm7_l"
-tip_bone = &"Arm14_l"
-override_tip_basis = false
-use_magnet = true
-magnet = Vector3(5, 5, 5)
-target_node = NodePath("../../../Marks/MarkWR")
-script = ExtResource("6_ndbcy")
-
-[node name="SkellyIKFL" type="SkeletonIK3D" parent="Body/Skelly"]
-process_priority = 1
-root_bone = &"LegF2_r"
-tip_bone = &"FootF1_r"
-override_tip_basis = false
-magnet = Vector3(1, 2.08165e-12, 1)
-target_node = NodePath("../../../Marks/MarkFL")
-script = ExtResource("6_ndbcy")
-
-[node name="SkellyIKFR" type="SkeletonIK3D" parent="Body/Skelly"]
-process_priority = 1
-root_bone = &"LegF1_l"
-tip_bone = &"FootF1_l"
-override_tip_basis = false
-magnet = Vector3(1, 2.08165e-12, 1)
-target_node = NodePath("../../../Marks/MarkFR")
-script = ExtResource("6_ndbcy")
-
-[node name="SkellyIKBL" type="SkeletonIK3D" parent="Body/Skelly"]
-process_priority = 1
-root_bone = &"LegB1_r"
-tip_bone = &"FootB1_r"
-override_tip_basis = false
-magnet = Vector3(1, 2.08165e-12, 1)
-target_node = NodePath("../../../Marks/MarkBL")
-script = ExtResource("6_ndbcy")
-
-[node name="SkellyIKBR" type="SkeletonIK3D" parent="Body/Skelly"]
-process_priority = 1
-root_bone = &"LegB1_l"
-tip_bone = &"FootB1_l"
-override_tip_basis = false
-magnet = Vector3(1, 2.08165e-12, 1)
-target_node = NodePath("../../../Marks/MarkBR")
-script = ExtResource("6_ndbcy")
-
-[node name="Body ConsolidatedHQ" type="MeshInstance3D" parent="Body/Skelly"]
+[node name="Body ConsolidatedHQ" type="MeshInstance3D" parent="Body/Skelly" unique_id=404725857]
 layers = 3
 gi_mode = 0
 mesh = SubResource("ArrayMesh_gam7m")
@@ -1454,7 +1377,7 @@ surface_material_override/1 = ExtResource("9_v6trn")
 surface_material_override/2 = ExtResource("8_2md02")
 surface_material_override/3 = ExtResource("11_g0vy2")
 
-[node name="Body ConsolidatedSQ" type="MeshInstance3D" parent="Body/Skelly"]
+[node name="Body ConsolidatedSQ" type="MeshInstance3D" parent="Body/Skelly" unique_id=563199192]
 visible = false
 gi_mode = 0
 mesh = SubResource("ArrayMesh_x5hb5")
@@ -1465,7 +1388,7 @@ surface_material_override/2 = ExtResource("8_2md02")
 surface_material_override/3 = ExtResource("11_g0vy2")
 surface_material_override/4 = ExtResource("9_o1dr1")
 
-[node name="SpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="Body/Skelly"]
+[node name="JiggleEarL" type="SpringBoneSimulator3D" parent="Body/Skelly" unique_id=158601237]
 setting_count = 1
 settings/0/root_bone_name = "Head2_l"
 settings/0/root_bone = 3
@@ -1484,10 +1407,14 @@ settings/0/drag/damping_curve = null
 settings/0/gravity/value = 0.0
 settings/0/gravity/damping_curve = null
 settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/joints/0/bone_name = "Head2_l"
+settings/0/joints/0/bone = 3
+settings/0/joints/1/bone_name = "TipH_l"
+settings/0/joints/1/bone = 4
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
-[node name="SpringBoneSimulator3D2" type="SpringBoneSimulator3D" parent="Body/Skelly"]
+[node name="JiggleEarR" type="SpringBoneSimulator3D" parent="Body/Skelly" unique_id=1217394327]
 setting_count = 1
 settings/0/root_bone_name = "Head2_r"
 settings/0/root_bone = 6
@@ -1506,12 +1433,222 @@ settings/0/drag/damping_curve = null
 settings/0/gravity/value = 0.0
 settings/0/gravity/damping_curve = null
 settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/joints/0/bone_name = "Head2_r"
+settings/0/joints/0/bone = 6
+settings/0/joints/1/bone_name = "TipH_r"
+settings/0/joints/1/bone = 7
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
-[node name="Marks" type="Node3D" parent="."]
+[node name="SkellyIKCL" type="CCDIK3D" parent="Body/Skelly" unique_id=1675597670]
+max_iterations = 3
+angular_delta_limit = 0.5235987755982988
+deterministic = true
+setting_count = 1
+settings/0/target_node = NodePath("../../../Marks/MarkWR")
+settings/0/root_bone_name = "Arm1_l"
+settings/0/root_bone = 9
+settings/0/end_bone_name = "Hand2_l"
+settings/0/end_bone = 24
+settings/0/extend_end_bone = false
+settings/0/joint_count = 16
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = null
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = null
+settings/0/joints/2/rotation_axis = 3
+settings/0/joints/2/limitation = null
+settings/0/joints/3/rotation_axis = 3
+settings/0/joints/3/limitation = null
+settings/0/joints/4/rotation_axis = 3
+settings/0/joints/4/limitation = null
+settings/0/joints/5/rotation_axis = 3
+settings/0/joints/5/limitation = null
+settings/0/joints/6/rotation_axis = 3
+settings/0/joints/6/limitation = null
+settings/0/joints/7/rotation_axis = 3
+settings/0/joints/7/limitation = null
+settings/0/joints/8/rotation_axis = 3
+settings/0/joints/8/limitation = null
+settings/0/joints/9/rotation_axis = 3
+settings/0/joints/9/limitation = null
+settings/0/joints/10/rotation_axis = 3
+settings/0/joints/10/limitation = null
+settings/0/joints/11/rotation_axis = 3
+settings/0/joints/11/limitation = null
+settings/0/joints/12/rotation_axis = 3
+settings/0/joints/12/limitation = null
+settings/0/joints/13/rotation_axis = 3
+settings/0/joints/13/limitation = null
+settings/0/joints/14/rotation_axis = 3
+settings/0/joints/14/limitation = null
+settings/0/joints/15/rotation_axis = 3
+settings/0/joints/15/limitation = null
 
-[node name="MarkWL" type="Marker3D" parent="Marks" node_paths=PackedStringArray("step_target", "adjacent_target", "opposite_target")]
+[node name="SkellyIKCR" type="CCDIK3D" parent="Body/Skelly" unique_id=900331392]
+max_iterations = 3
+angular_delta_limit = 0.5235987755982988
+deterministic = true
+setting_count = 1
+settings/0/target_node = NodePath("../../../Marks/MarkWL")
+settings/0/root_bone_name = "Arm1_r"
+settings/0/root_bone = 27
+settings/0/end_bone_name = "Hand2_r"
+settings/0/end_bone = 42
+settings/0/extend_end_bone = false
+settings/0/joint_count = 16
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = null
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = null
+settings/0/joints/2/rotation_axis = 3
+settings/0/joints/2/limitation = null
+settings/0/joints/3/rotation_axis = 3
+settings/0/joints/3/limitation = null
+settings/0/joints/4/rotation_axis = 3
+settings/0/joints/4/limitation = null
+settings/0/joints/5/rotation_axis = 3
+settings/0/joints/5/limitation = null
+settings/0/joints/6/rotation_axis = 3
+settings/0/joints/6/limitation = null
+settings/0/joints/7/rotation_axis = 3
+settings/0/joints/7/limitation = null
+settings/0/joints/8/rotation_axis = 3
+settings/0/joints/8/limitation = null
+settings/0/joints/9/rotation_axis = 3
+settings/0/joints/9/limitation = null
+settings/0/joints/10/rotation_axis = 3
+settings/0/joints/10/limitation = null
+settings/0/joints/11/rotation_axis = 3
+settings/0/joints/11/limitation = null
+settings/0/joints/12/rotation_axis = 3
+settings/0/joints/12/limitation = null
+settings/0/joints/13/rotation_axis = 3
+settings/0/joints/13/limitation = null
+settings/0/joints/14/rotation_axis = 3
+settings/0/joints/14/limitation = null
+settings/0/joints/15/rotation_axis = 3
+settings/0/joints/15/limitation = null
+
+[node name="SkellyIKFL" type="CCDIK3D" parent="Body/Skelly" unique_id=472057612]
+max_iterations = 3
+angular_delta_limit = 0.17453292519943295
+deterministic = true
+setting_count = 1
+settings/0/target_node = NodePath("../../../Marks/MarkFR")
+settings/0/root_bone_name = "LegF1_l"
+settings/0/root_bone = 54
+settings/0/end_bone_name = "FootF2_l."
+settings/0/end_bone = 60
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 6
+settings/0/end_bone/length = 0.0
+settings/0/joint_count = 7
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = null
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = null
+settings/0/joints/2/rotation_axis = 3
+settings/0/joints/2/limitation = null
+settings/0/joints/3/rotation_axis = 3
+settings/0/joints/3/limitation = null
+settings/0/joints/4/rotation_axis = 3
+settings/0/joints/4/limitation = null
+settings/0/joints/5/rotation_axis = 3
+settings/0/joints/5/limitation = null
+settings/0/joints/6/rotation_axis = 3
+settings/0/joints/6/limitation = null
+
+[node name="SkellyIKFR" type="CCDIK3D" parent="Body/Skelly" unique_id=945440222]
+max_iterations = 3
+angular_delta_limit = 0.17453292519943295
+deterministic = true
+setting_count = 1
+settings/0/target_node = NodePath("../../../Marks/MarkFL")
+settings/0/root_bone_name = "LegF1_r"
+settings/0/root_bone = 72
+settings/0/end_bone_name = "FootF2_r"
+settings/0/end_bone = 78
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 6
+settings/0/end_bone/length = 0.0
+settings/0/joint_count = 7
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = null
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = null
+settings/0/joints/2/rotation_axis = 3
+settings/0/joints/2/limitation = null
+settings/0/joints/3/rotation_axis = 3
+settings/0/joints/3/limitation = null
+settings/0/joints/4/rotation_axis = 3
+settings/0/joints/4/limitation = null
+settings/0/joints/5/rotation_axis = 3
+settings/0/joints/5/limitation = null
+settings/0/joints/6/rotation_axis = 3
+settings/0/joints/6/limitation = null
+
+[node name="SkellyIKBL" type="CCDIK3D" parent="Body/Skelly" unique_id=665605499]
+max_iterations = 3
+angular_delta_limit = 0.17453292519943295
+deterministic = true
+setting_count = 1
+settings/0/target_node = NodePath("../../../Marks/MarkBR")
+settings/0/root_bone_name = "LegB1_l"
+settings/0/root_bone = 45
+settings/0/end_bone_name = "FootB2_l"
+settings/0/end_bone = 51
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 6
+settings/0/end_bone/length = 0.0
+settings/0/joint_count = 7
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = null
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = null
+settings/0/joints/2/rotation_axis = 3
+settings/0/joints/2/limitation = null
+settings/0/joints/3/rotation_axis = 3
+settings/0/joints/3/limitation = null
+settings/0/joints/4/rotation_axis = 3
+settings/0/joints/4/limitation = null
+settings/0/joints/5/rotation_axis = 3
+settings/0/joints/5/limitation = null
+settings/0/joints/6/rotation_axis = 3
+settings/0/joints/6/limitation = null
+
+[node name="SkellyIKBR" type="CCDIK3D" parent="Body/Skelly" unique_id=917123438]
+max_iterations = 3
+angular_delta_limit = 0.17453292519943295
+deterministic = true
+setting_count = 1
+settings/0/target_node = NodePath("../../../Marks/MarkBL")
+settings/0/root_bone_name = "LegB1_r"
+settings/0/root_bone = 63
+settings/0/end_bone_name = "FootB2_r"
+settings/0/end_bone = 69
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 6
+settings/0/end_bone/length = 0.0
+settings/0/joint_count = 7
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = null
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = null
+settings/0/joints/2/rotation_axis = 3
+settings/0/joints/2/limitation = null
+settings/0/joints/3/rotation_axis = 3
+settings/0/joints/3/limitation = null
+settings/0/joints/4/rotation_axis = 3
+settings/0/joints/4/limitation = null
+settings/0/joints/5/rotation_axis = 3
+settings/0/joints/5/limitation = null
+settings/0/joints/6/rotation_axis = 3
+settings/0/joints/6/limitation = null
+
+[node name="Marks" type="Node3D" parent="." unique_id=2111217355]
+
+[node name="MarkWL" type="Marker3D" parent="Marks" unique_id=1299062719 node_paths=PackedStringArray("step_target", "adjacent_target", "opposite_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.08165e-12, -3.48777)
 top_level = true
 script = ExtResource("8_i63bf")
@@ -1522,7 +1659,7 @@ step_distance = 5.0
 tween_speed_x = 0.02
 tween_speed_y = 0.02
 
-[node name="MarkWR" type="Marker3D" parent="Marks" node_paths=PackedStringArray("step_target", "adjacent_target", "opposite_target")]
+[node name="MarkWR" type="Marker3D" parent="Marks" unique_id=913472124 node_paths=PackedStringArray("step_target", "adjacent_target", "opposite_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.08165e-12, -3.48777)
 top_level = true
 script = ExtResource("8_i63bf")
@@ -1533,7 +1670,7 @@ step_distance = 5.0
 tween_speed_x = 0.02
 tween_speed_y = 0.02
 
-[node name="MarkCL" type="Marker3D" parent="Marks" node_paths=PackedStringArray("step_target", "adjacent_target", "opposite_target")]
+[node name="MarkCL" type="Marker3D" parent="Marks" unique_id=1891278147 node_paths=PackedStringArray("step_target", "adjacent_target", "opposite_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.08165e-12, 0.512227)
 top_level = true
 script = ExtResource("8_i63bf")
@@ -1544,7 +1681,7 @@ step_distance = 5.0
 tween_speed_x = 0.02
 tween_speed_y = 0.02
 
-[node name="MarkCR" type="Marker3D" parent="Marks" node_paths=PackedStringArray("step_target", "adjacent_target", "opposite_target")]
+[node name="MarkCR" type="Marker3D" parent="Marks" unique_id=775944639 node_paths=PackedStringArray("step_target", "adjacent_target", "opposite_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.08165e-12, 0.512227)
 top_level = true
 script = ExtResource("8_i63bf")
@@ -1555,7 +1692,7 @@ step_distance = 5.0
 tween_speed_x = 0.02
 tween_speed_y = 0.02
 
-[node name="MarkFL" type="Marker3D" parent="Marks" node_paths=PackedStringArray("step_target", "adjacent_target", "opposite_target")]
+[node name="MarkFL" type="Marker3D" parent="Marks" unique_id=309935482 node_paths=PackedStringArray("step_target", "adjacent_target", "opposite_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.08165e-12, -0.987773)
 top_level = true
 script = ExtResource("8_i63bf")
@@ -1566,7 +1703,7 @@ step_distance = 5.0
 tween_speed_x = 0.02
 tween_speed_y = 0.02
 
-[node name="MarkFR" type="Marker3D" parent="Marks" node_paths=PackedStringArray("step_target", "adjacent_target", "opposite_target")]
+[node name="MarkFR" type="Marker3D" parent="Marks" unique_id=280281940 node_paths=PackedStringArray("step_target", "adjacent_target", "opposite_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.08165e-12, -0.987773)
 top_level = true
 script = ExtResource("8_i63bf")
@@ -1577,7 +1714,7 @@ step_distance = 5.0
 tween_speed_x = 0.02
 tween_speed_y = 0.02
 
-[node name="MarkBL" type="Marker3D" parent="Marks" node_paths=PackedStringArray("step_target", "adjacent_target", "opposite_target")]
+[node name="MarkBL" type="Marker3D" parent="Marks" unique_id=969029837 node_paths=PackedStringArray("step_target", "adjacent_target", "opposite_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.08165e-12, 2.01223)
 top_level = true
 script = ExtResource("8_i63bf")
@@ -1588,7 +1725,7 @@ step_distance = 5.0
 tween_speed_x = 0.02
 tween_speed_y = 0.02
 
-[node name="MarkBR" type="Marker3D" parent="Marks" node_paths=PackedStringArray("step_target", "adjacent_target", "opposite_target")]
+[node name="MarkBR" type="Marker3D" parent="Marks" unique_id=1139263383 node_paths=PackedStringArray("step_target", "adjacent_target", "opposite_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.08165e-12, 2.01223)
 top_level = true
 script = ExtResource("8_i63bf")
@@ -1599,109 +1736,109 @@ step_distance = 5.0
 tween_speed_x = 0.02
 tween_speed_y = 0.02
 
-[node name="RayMarks" type="Node3D" parent="."]
+[node name="RayMarks" type="Node3D" parent="." unique_id=2145947209]
 script = ExtResource("8_i73mv")
 offset = 5.0
 
-[node name="RayWLS" type="RayCast3D" parent="RayMarks" node_paths=PackedStringArray("step_target")]
+[node name="RayWLS" type="RayCast3D" parent="RayMarks" unique_id=1402530200 node_paths=PackedStringArray("step_target")]
 transform = Transform3D(0.906308, -0.422618, 0, 0.383022, 0.821394, 0.422618, -0.178606, -0.383022, 0.906308, -5, 2, -5)
 target_position = Vector3(0, -10, 0)
 collide_with_areas = true
 script = ExtResource("8_nvpxw")
 step_target = NodePath("MarkWLS")
 
-[node name="MarkWLS" type="Marker3D" parent="RayMarks/RayWLS"]
+[node name="MarkWLS" type="Marker3D" parent="RayMarks/RayWLS" unique_id=172362282]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[node name="RayWRS" type="RayCast3D" parent="RayMarks" node_paths=PackedStringArray("step_target")]
+[node name="RayWRS" type="RayCast3D" parent="RayMarks" unique_id=1829001838 node_paths=PackedStringArray("step_target")]
 transform = Transform3D(0.906308, 0.422618, 0, -0.383022, 0.821394, 0.422618, 0.178606, -0.383022, 0.906308, 5, 2, -5)
 target_position = Vector3(0, -10, 0)
 collide_with_areas = true
 script = ExtResource("8_nvpxw")
 step_target = NodePath("MarkWRS")
 
-[node name="MarkWRS" type="Marker3D" parent="RayMarks/RayWRS"]
+[node name="MarkWRS" type="Marker3D" parent="RayMarks/RayWRS" unique_id=429022377]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[node name="RayCLS" type="RayCast3D" parent="RayMarks" node_paths=PackedStringArray("step_target")]
+[node name="RayCLS" type="RayCast3D" parent="RayMarks" unique_id=1780936914 node_paths=PackedStringArray("step_target")]
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -6, 2, 0)
 target_position = Vector3(0, -10, 0)
 collide_with_areas = true
 script = ExtResource("8_nvpxw")
 step_target = NodePath("MarkCLS")
 
-[node name="MarkCLS" type="Marker3D" parent="RayMarks/RayCLS"]
+[node name="MarkCLS" type="Marker3D" parent="RayMarks/RayCLS" unique_id=654119223]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[node name="RayCRS" type="RayCast3D" parent="RayMarks" node_paths=PackedStringArray("step_target")]
+[node name="RayCRS" type="RayCast3D" parent="RayMarks" unique_id=83225787 node_paths=PackedStringArray("step_target")]
 transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 6, 2, 0)
 target_position = Vector3(0, -10, 0)
 collide_with_areas = true
 script = ExtResource("8_nvpxw")
 step_target = NodePath("MarkCRS")
 
-[node name="MarkCRS" type="Marker3D" parent="RayMarks/RayCRS"]
+[node name="MarkCRS" type="Marker3D" parent="RayMarks/RayCRS" unique_id=2133845101]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[node name="RayFLS" type="RayCast3D" parent="RayMarks" node_paths=PackedStringArray("step_target")]
+[node name="RayFLS" type="RayCast3D" parent="RayMarks" unique_id=735361685 node_paths=PackedStringArray("step_target")]
 transform = Transform3D(0.984808, -0.173648, 0, 0.17101, 0.969846, 0.173648, -0.0301537, -0.17101, 0.984808, -2, 2, -2)
 target_position = Vector3(0, -10, 0)
 collide_with_areas = true
 script = ExtResource("8_nvpxw")
 step_target = NodePath("MarkFLS")
 
-[node name="MarkFLS" type="Marker3D" parent="RayMarks/RayFLS"]
+[node name="MarkFLS" type="Marker3D" parent="RayMarks/RayFLS" unique_id=952416425]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[node name="RayFRS" type="RayCast3D" parent="RayMarks" node_paths=PackedStringArray("step_target")]
+[node name="RayFRS" type="RayCast3D" parent="RayMarks" unique_id=1458413147 node_paths=PackedStringArray("step_target")]
 transform = Transform3D(0.984808, 0.173648, 0, -0.17101, 0.969846, 0.173648, 0.0301537, -0.17101, 0.984808, 2, 2, -2)
 target_position = Vector3(0, -10, 0)
 collide_with_areas = true
 script = ExtResource("8_nvpxw")
 step_target = NodePath("MarkFRS")
 
-[node name="MarkFRS" type="Marker3D" parent="RayMarks/RayFRS"]
+[node name="MarkFRS" type="Marker3D" parent="RayMarks/RayFRS" unique_id=1309090928]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[node name="RayBLS" type="RayCast3D" parent="RayMarks" node_paths=PackedStringArray("step_target")]
+[node name="RayBLS" type="RayCast3D" parent="RayMarks" unique_id=1667096553 node_paths=PackedStringArray("step_target")]
 transform = Transform3D(0.984808, -0.173648, 0, 0.17101, 0.969846, -0.173648, 0.0301537, 0.17101, 0.984808, -2, 2, 2)
 target_position = Vector3(0, -10, 0)
 collide_with_areas = true
 script = ExtResource("8_nvpxw")
 step_target = NodePath("MarkBLS")
 
-[node name="MarkBLS" type="Marker3D" parent="RayMarks/RayBLS"]
+[node name="MarkBLS" type="Marker3D" parent="RayMarks/RayBLS" unique_id=769908911]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[node name="RayBRS" type="RayCast3D" parent="RayMarks" node_paths=PackedStringArray("step_target")]
+[node name="RayBRS" type="RayCast3D" parent="RayMarks" unique_id=1192376341 node_paths=PackedStringArray("step_target")]
 transform = Transform3D(0.984808, 0.173648, 0, -0.17101, 0.969846, -0.173648, -0.0301537, 0.17101, 0.984808, 2, 2, 2)
 target_position = Vector3(0, -10, 0)
 collide_with_areas = true
 script = ExtResource("8_nvpxw")
 step_target = NodePath("MarkBRS")
 
-[node name="MarkBRS" type="Marker3D" parent="RayMarks/RayBRS"]
+[node name="MarkBRS" type="Marker3D" parent="RayMarks/RayBRS" unique_id=584222405]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[node name="Camera" type="Node3D" parent="." node_paths=PackedStringArray("target", "player")]
+[node name="Camera" type="Node3D" parent="." unique_id=831941683 node_paths=PackedStringArray("target", "player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 top_level = true
 script = ExtResource("7_227vq")
 target = NodePath("../Reticle/Reticle3D")
 player = NodePath("..")
 
-[node name="Cam" type="Camera3D" parent="Camera"]
+[node name="Cam" type="Camera3D" parent="Camera" unique_id=494386346]
 transform = Transform3D(1, -4.39059e-16, 3.36903e-16, 3.36902e-16, 0.965926, 0.258819, -4.3906e-16, -0.258819, 0.965926, 0, 9, 12)
 current = true
 fov = 80.0
 
-[node name="RayCam" type="RayCast3D" parent="Camera"]
+[node name="RayCam" type="RayCast3D" parent="Camera" unique_id=254086609]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1.5, 1.5)
 target_position = Vector3(0, 7.5, 10.5)
 hit_from_inside = true
 debug_shape_thickness = 1
 
-[node name="RayAim" type="RayCast3D" parent="Camera"]
+[node name="RayAim" type="RayCast3D" parent="Camera" unique_id=187828463]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 12)
 target_position = Vector3(0, -9, -27)
 hit_from_inside = true
@@ -1709,18 +1846,18 @@ collide_with_areas = true
 debug_shape_thickness = 1
 script = ExtResource("16_tp1vm")
 
-[node name="Reticle" type="Node3D" parent="." node_paths=PackedStringArray("player")]
+[node name="Reticle" type="Node3D" parent="." unique_id=6735272 node_paths=PackedStringArray("player")]
 top_level = true
 script = ExtResource("8_myhs0")
 player = NodePath("..")
 
-[node name="Reticle3D" type="CharacterBody3D" parent="Reticle"]
+[node name="Reticle3D" type="CharacterBody3D" parent="Reticle" unique_id=1273389724]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
 visible = false
 motion_mode = 1
 platform_on_leave = 2
 
-[node name="Reticle Sprite" type="Sprite3D" parent="Reticle/Reticle3D"]
+[node name="Reticle Sprite" type="Sprite3D" parent="Reticle/Reticle3D" unique_id=809754818]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 ignore_occlusion_culling = true
 billboard = 1
@@ -1729,10 +1866,10 @@ fixed_size = true
 alpha_cut = 1
 texture = ExtResource("14_6y7mc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Reticle/Reticle3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reticle/Reticle3D" unique_id=1998711585]
 shape = SubResource("SphereShape3D_3n8o3")
 
-[node name="Lentes" type="MeshInstance3D" parent="."]
+[node name="Lentes" type="MeshInstance3D" parent="." unique_id=1501394725]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.019356, -0.939708)
 visible = false
 mesh = SubResource("ArrayMesh_wqegg")
